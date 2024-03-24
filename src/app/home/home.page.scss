@@ -1,0 +1,19 @@
+.menu-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.menu-item {
+  text-align: center;
+}
+
+.menu-item img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+ion-button {
+  margin-top: 10px;
+}

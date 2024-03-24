@@ -2,18 +2,26 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' }, // Halaman login sebagai halaman default
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   {
     path: 'login',
     loadChildren: () =>
       import('./login/login.module').then((m) => m.LoginPageModule),
   },
   {
+    path: 'home',
+    loadChildren: () =>
+      import('./home/home.module').then((m) => m.HomePageModule),
+  },
+  {
     path: 'splash',
     loadChildren: () =>
       import('./splash/splash.module').then((m) => m.SplashPageModule),
   },
-  // Tambahkan rute lainnya di sini
+  {
+    path: 'suhu',
+    loadChildren: () => import('./suhu/suhu.module').then( m => m.SuhuPageModule)
+  },
 ];
 
 @NgModule({

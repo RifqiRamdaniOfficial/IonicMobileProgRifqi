@@ -4,18 +4,25 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class AuthService {
-  private readonly USER_KEY = 'user';
+  isLoggedIn = false;
+
   constructor() {}
 
-  login() {
-    localStorage.setItem(this.USER_KEY, 'loggedIn');
+  login(username: string, password: string): boolean {
+    // Misalnya, kita melakukan validasi sederhana
+    if (username === 'user' && password === 'password') {
+      this.isLoggedIn = true;
+      return true;
+    } else {
+      return false;
+    }
   }
 
-  logout() {
-    localStorage.removeItem(this.USER_KEY);
+  logout(): void {
+    this.isLoggedIn = false;
   }
 
-  isLoggedIn(): boolean {
-    return localStorage.getItem(this.USER_KEY) === 'loggedin';
+  isAuthenticated(): boolean {
+    return this.isLoggedIn;
   }
 }

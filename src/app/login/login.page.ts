@@ -1,22 +1,26 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.page.html',
-  styleUrls: ['./login.page.scss'],
+  templateUrl: 'login.page.html',
+  styleUrls: ['login.page.scss'],
 })
 export class LoginPage {
-  constructor(private authService: AuthService) {}
   username: string = '';
   password: string = '';
+
+  constructor(private router: Router) {}
+
   login() {
-    // Anda dapat menambahkan logika validasi di sini
-    if (this.username === 'user' && this.password === 'password') {
-      // Login berhasil, redirect ke halaman beranda
-      this.authService.login();
+    // Ganti dengan validasi yang sesuai, ini hanya contoh sederhana
+    if (this.username === 'admin' && this.password === 'admin123') {
+      // Simpan informasi login di localStorage
+      localStorage.setItem('username', this.username);
+      // Redirect ke halaman lain setelah login berhasil
+      this.router.navigate(['/home']);
     } else {
-      // Tampilkan pesan kesalahan jika login gagal
+      alert('Username atau password salah!');
     }
   }
 }
