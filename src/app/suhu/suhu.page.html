@@ -4,23 +4,47 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-list>
+<ion-content>
   <ion-item>
-    <ion-select label="Konversi Suhu" placeholder="Pilih Konversi">
-      <ion-select-option value="apple">Celcius to Fahrenheit</ion-select-option>
-      <ion-select-option value="orange">Celcius to Kelvin</ion-select-option>
-      <ion-select-option value="banana"
-        >Fahrenheit to Celcius</ion-select-option
-      >
-      <ion-select-option value="orange">Fahrenheit to Kelvin</ion-select-option>
-      <ion-select-option value="orange">Kelvin to Celcius</ion-select-option>
-      <ion-select-option value="orange">Kelvin to Fahrenheit</ion-select-option>
-    </ion-select>
+    <ion-label position="floating">Temperature</ion-label>
+    <ion-input type="number" [(ngModel)]="inputTemperature"></ion-input>
   </ion-item>
-</ion-list>
 
-<ion-footer>
-  <ion-toolbar>
-    <ion-title aria-expanded="block">Create By Rifqi Ramdani</ion-title>
-  </ion-toolbar>
-</ion-footer>
+  <ion-content>
+    <ion-item>
+      <ion-label>Select From Unit</ion-label>
+      <ion-select interface="popover" [(ngModel)]="selectedFromUnit">
+        <ion-select-option value="celsius">Celsius</ion-select-option>
+        <ion-select-option value="fahrenheit">Fahrenheit</ion-select-option>
+        <ion-select-option value="kelvin">Kelvin</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Select To Unit</ion-label>
+      <ion-select interface="popover" [(ngModel)]="selectedToUnit">
+        <ion-select-option value="celsius">Celsius</ion-select-option>
+        <ion-select-option value="fahrenheit">Fahrenheit</ion-select-option>
+        <ion-select-option value="kelvin">Kelvin</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Temperature</ion-label>
+      <ion-input type="number" [(ngModel)]="inputTemperature"></ion-input>
+    </ion-item>
+
+    <ion-button expand="full" (click)="convert()">Convert</ion-button>
+
+    <ion-item *ngIf="result">
+      <ion-label>Result</ion-label>
+      <ion-input type="number" disabled="true" value="{{result}}"></ion-input>
+    </ion-item>
+  </ion-content>
+
+  <ion-footer>
+    <ion-toolbar>
+      <ion-title aria-expanded="block">Create By Rifqi Ramdani</ion-title>
+    </ion-toolbar>
+  </ion-footer>
+</ion-content>
